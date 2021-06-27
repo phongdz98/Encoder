@@ -1,0 +1,542 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5/7/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:47:11 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc" class="file"><acronym title="D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc">D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">70</td></tr>
+</table>
+</td>
+</table><a name="IDC5EQWYMRLSBIJEBVW1V2H0FL0QS4OZI33RBBZPMFN1RYST00XLF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUZV0EUKHFXYILHBLLR4K0LEZ3ILT2CLZP1R5E1GB3J1UIJGBMZDG">Clearance Constraint (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXUQGYAUIT33DWIDKENV3II1WFICWWPDQYFJKUDGCMTEACISN2QK">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPRJVOP1GNNB1MZUC3YG504HC3HNZWJ1NYR1E0VCMKTVGQID0UJFJ">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">54</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2EC25YVR3VCXJU03M0VA2NESBCADD4O1DSLXWCNL0LUTCUW5L3JB">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAZEGVCTZRLKVNHAEQE45CUMJXKTS3WGHNTLQ0OF2EHXQANVQH1OM">Width Constraint (Min=0.165mm) (Max=0.508mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEYGTH002EW5ULZAU4APWRZS0DE4RKMKE04CRSOBA5RFAKRHXRQSC">Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHH0K0T2BFKNZIDT4D02LJ15LQN4I23PSNHWJA4IQVEG4CZZEKUWK">Hole Size Constraint (Min=0.025mm) (Max=3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQ5NFSN2LLTJHSFPPWP4LFJ2XO5UH240SL0CULDVUPSVHZCZXOGD">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCGYP31SHWV4K4PLECE45512GCFJFXRXT1VHL4LFNFAO3SYD54TI">Minimum Solder Mask Sliver (Gap=0.025mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMRKT2DH1FLRGI4KRSAPIW3YMTIIP0RRVOKTDV4NVOHK2N1IDZCKM">Silk To Solder Mask (Clearance=0.051mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLLJYOWWZ0OBGIQNZOGYVY50THDNHQOPGVJLZ2WP5JEGHU1D410LJ">Silk to Silk (Clearance=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3BURKD5QYFPSKF0ZVJKUUV23UN2N5B2QKGOF5VIFNUY5V3EJ3QCL">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDV3NJUKPHSSXZEFCMDZ4NCFNCNF2NPNX2RSRIYM0R1NZYMNA3BN">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">70</td>
+</tr>
+</table><br><a name="IDPRJVOP1GNNB1MZUC3YG504HC3HNZWJ1NYR1E0VCMKTVGQID0UJFJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4864.252mil|Location2.X=5097.867mil|Location1.Y=3393.276mil|Location2.Y=3882.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4864.252mil|Location2.X=5097.867mil|Location1.Y=3393.276mil|Location2.Y=3882.41mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C13-1(40.577mm,24.714mm) on Bottom Layer And Pad BA1-2(45.136mm,35.763mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4463.661mil|Location2.X=4567.007mil|Location1.Y=3051.621mil|Location2.Y=3099.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4463.661mil|Location2.X=4567.007mil|Location1.Y=3051.621mil|Location2.Y=3099.843mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD2-23(30.527mm,16.536mm) on Top Layer And Pad C10-1(31.977mm,16.036mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3401.472mil|Location2.X=3507.401mil|Location1.Y=3502.945mil|Location2.Y=3590.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3401.472mil|Location2.X=3507.401mil|Location1.Y=3502.945mil|Location2.Y=3590.631mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-1(3.422mm,28.677mm) on Top Layer And Via (5.385mm,27.178mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4590.254mil|Location2.X=4638.858mil|Location1.Y=3265.867mil|Location2.Y=3377.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4590.254mil|Location2.X=4638.858mil|Location1.Y=3265.867mil|Location2.Y=3377.401mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C11-1(33.617mm,21.478mm) on Bottom Layer And Pad DD2-8(34.127mm,23.136mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4590.254mil|Location2.X=4641.399mil|Location1.Y=3212.41mil|Location2.Y=3307.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4590.254mil|Location2.X=4641.399mil|Location1.Y=3212.41mil|Location2.Y=3307.205mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C11-1(33.617mm,21.478mm) on Bottom Layer And Via (34.087mm,19.9mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3401.472mil|Location2.X=3677.142mil|Location1.Y=3606.378mil|Location2.Y=3785.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3401.472mil|Location2.X=3677.142mil|Location1.Y=3606.378mil|Location2.Y=3785.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C1-2(3.422mm,30.127mm) on Top Layer And Pad C2-1(9.049mm,32.113mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4748.11mil|Location2.X=4857.362mil|Location1.Y=3261.26mil|Location2.Y=3308.19mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4748.11mil|Location2.X=4857.362mil|Location1.Y=3261.26mil|Location2.Y=3308.19mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C12-1(37.627mm,21.503mm) on Bottom Layer And Pad DD2-47(39.227mm,21.036mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4712.963mil|Location2.X=4789.449mil|Location1.Y=3182.472mil|Location2.Y=3308.19mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4712.963mil|Location2.X=4789.449mil|Location1.Y=3182.472mil|Location2.Y=3308.19mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R3-1(36.809mm,19.585mm) on Bottom Layer And Pad C12-1(37.627mm,21.503mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4806.181mil|Location2.X=4905.59mil|Location1.Y=3261.26mil|Location2.Y=3434.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4806.181mil|Location2.X=4905.59mil|Location1.Y=3261.26mil|Location2.Y=3434.614mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD2-47(39.227mm,21.036mm) on Top Layer And Pad C13-1(40.577mm,24.714mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3610.213mil|Location2.X=3834.401mil|Location1.Y=3624.528mil|Location2.Y=3785.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3610.213mil|Location2.X=3834.401mil|Location1.Y=3624.528mil|Location2.Y=3785.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C2-1(9.049mm,32.113mm) on Top Layer And Via (13.691mm,32.842mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3610.213mil|Location2.X=3677.142mil|Location1.Y=3190.945mil|Location2.Y=3785.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3610.213mil|Location2.X=3677.142mil|Location1.Y=3190.945mil|Location2.Y=3785.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (8.941mm,19.253mm) from Top Layer to Bottom Layer And Pad C2-1(9.049mm,32.113mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.142mil|Location2.X=3683.724mil|Location1.Y=3011.197mil|Location2.Y=3541.85mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.142mil|Location2.X=3683.724mil|Location1.Y=3011.197mil|Location2.Y=3541.85mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad X1-5(8.84mm,14.836mm) on Top Layer And Pad C2-2(9.049mm,25.913mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3531.401mil|Location2.X=3677.142mil|Location1.Y=3380.433mil|Location2.Y=3541.85mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3531.401mil|Location2.X=3677.142mil|Location1.Y=3380.433mil|Location2.Y=3541.85mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (6.401mm,27.178mm) from Top Layer to Bottom Layer And Pad C2-2(9.049mm,25.913mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4242.143mil|Location2.X=4505.803mil|Location1.Y=3595.551mil|Location2.Y=3798.871mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4242.143mil|Location2.X=4505.803mil|Location1.Y=3595.551mil|Location2.Y=3798.871mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Pad C4-1(25.1mm,32.441mm) on Top Layer And Pad C3-2(30.422mm,29.852mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4306.401mil|Location2.X=4585.134mil|Location1.Y=3316.945mil|Location2.Y=3716.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4306.401mil|Location2.X=4585.134mil|Location1.Y=3316.945mil|Location2.Y=3716.22mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Track (28.423mm,24.79mm)(28.423mm,27.33mm) on Bottom Layer And Pad C3-2(30.422mm,29.852mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3938.575mil|Location2.X=4309.072mil|Location1.Y=3631.933mil|Location2.Y=3798.871mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3938.575mil|Location2.X=4309.072mil|Location1.Y=3631.933mil|Location2.Y=3798.871mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Pad DA1-2(17.141mm,31.103mm) on Top Layer And Pad C4-1(25.1mm,32.441mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4079.489mil|Location2.X=4196.929mil|Location1.Y=2939.409mil|Location2.Y=2994.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4079.489mil|Location2.X=4196.929mil|Location1.Y=2939.409mil|Location2.Y=2994.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C5-1(20.644mm,13.186mm) on Bottom Layer And Pad DD1-18(22.227mm,13.836mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5183.165mil|Location2.X=5242.22mil|Location1.Y=2714.567mil|Location2.Y=3094.488mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5183.165mil|Location2.X=5242.22mil|Location1.Y=2714.567mil|Location2.Y=3094.488mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1(48.902mm,7.55mm) on Top Layer And Pad C7-1(48.902mm,16mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4895.937mil|Location2.X=5242.22mil|Location1.Y=2547.48mil|Location2.Y=2761.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4895.937mil|Location2.X=5242.22mil|Location1.Y=2547.48mil|Location2.Y=2761.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad X2-4(41.707mm,3.556mm) on Multi-Layer And Pad C6-1(48.902mm,7.55mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5119.873mil|Location2.X=5242.22mil|Location1.Y=3047.244mil|Location2.Y=3219.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5119.873mil|Location2.X=5242.22mil|Location1.Y=3047.244mil|Location2.Y=3219.968mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C8-1(47.07mm,19.262mm) on Top Layer And Pad C7-1(48.902mm,16mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4864.252mil|Location2.X=5242.22mil|Location1.Y=3047.244mil|Location2.Y=3103.536mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4864.252mil|Location2.X=5242.22mil|Location1.Y=3047.244mil|Location2.Y=3103.536mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C9-1(40.577mm,16.305mm) on Bottom Layer And Pad C7-1(48.902mm,16mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4742.075mil|Location2.X=4905.59mil|Location1.Y=3057.618mil|Location2.Y=3103.536mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4742.075mil|Location2.X=4905.59mil|Location1.Y=3057.618mil|Location2.Y=3103.536mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (37.152mm,15.867mm) from Top Layer to Bottom Layer And Pad C9-1(40.577mm,16.305mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3818.401mil|Location2.X=3895.394mil|Location1.Y=3631.933mil|Location2.Y=3741.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3818.401mil|Location2.X=3895.394mil|Location1.Y=3631.933mil|Location2.Y=3741.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (13.691mm,32.842mm) from Top Layer to Bottom Layer And Pad DA1-3(14.841mm,31.103mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.599mil|Location2.X=4196.929mil|Location1.Y=3053.583mil|Location2.Y=3096.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.599mil|Location2.X=4196.929mil|Location1.Y=3053.583mil|Location2.Y=3096.032mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (17.277mm,16.436mm) from Top Layer to Bottom Layer And Pad DD1-21(22.227mm,15.786mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3858.031mil|Location2.X=3926.929mil|Location1.Y=3095.905mil|Location2.Y=3173.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3858.031mil|Location2.X=3926.929mil|Location1.Y=3095.905mil|Location2.Y=3173.661mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad DD1-4(15.369mm,18.386mm) on Top Layer And Pad VD3-5(15.377mm,16.836mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4514.842mil|Location1.Y=3054.441mil|Location2.Y=3099.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4514.842mil|Location1.Y=3054.441mil|Location2.Y=3099.843mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (23.987mm,15.786mm) from Top Layer to Bottom Layer And Pad DD2-23(30.527mm,16.536mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3785.844mil|Location2.X=3987.049mil|Location1.Y=2584.945mil|Location2.Y=2880.795mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3785.844mil|Location2.X=3987.049mil|Location1.Y=2584.945mil|Location2.Y=2880.795mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Track (15.2mm,6.198mm)(15.216mm,6.182mm) on Top Layer And Pad R2-1(15.231mm,8.632mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4712.963mil|Location2.X=4760.207mil|Location1.Y=3057.618mil|Location2.Y=3241.527mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4712.963mil|Location2.X=4760.207mil|Location1.Y=3057.618mil|Location2.Y=3241.527mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R3-1(36.809mm,19.585mm) on Bottom Layer And Via (37.152mm,15.867mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4537.478mil|Location2.X=4641.399mil|Location1.Y=3123.472mil|Location2.Y=3182.527mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4537.478mil|Location2.X=4641.399mil|Location1.Y=3123.472mil|Location2.Y=3182.527mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R4-1(32.352mm,18.086mm) on Bottom Layer And Via (34.087mm,17.729mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.142mil|Location2.X=3846.535mil|Location1.Y=3011.197mil|Location2.Y=3111.653mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.142mil|Location2.X=3846.535mil|Location1.Y=3011.197mil|Location2.Y=3111.653mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad X1-5(8.84mm,14.836mm) on Top Layer And Pad VD3-2(13.927mm,16.836mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3735.709mil|Location2.X=4019.401mil|Location1.Y=3003.779mil|Location2.Y=3188.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3735.709mil|Location2.X=4019.401mil|Location1.Y=3003.779mil|Location2.Y=3188.032mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad VD3-2(13.927mm,16.836mm) on Bottom Layer And Track (16.053mm,16.436mm)(17.277mm,16.436mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.142mil|Location2.X=3683.724mil|Location1.Y=3137.181mil|Location2.Y=3186.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.142mil|Location2.X=3683.724mil|Location1.Y=3137.181mil|Location2.Y=3186.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (8.687mm,18.745mm) from Top Layer to Bottom Layer And Pad X1-1(8.84mm,18.036mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.401mil|Location2.X=3985.844mil|Location1.Y=2584.945mil|Location2.Y=2784.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.401mil|Location2.X=3985.844mil|Location1.Y=2584.945mil|Location2.Y=2784.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (12.675mm,6.198mm) from Top Layer to Bottom Layer And Track (15.2mm,6.198mm)(15.216mm,6.182mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4276.401mil|Location2.X=4485.803mil|Location1.Y=3296.945mil|Location2.Y=3515.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4276.401mil|Location2.X=4485.803mil|Location1.Y=3296.945mil|Location2.Y=3515.89mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Track (27.661mm,24.282mm)(27.686mm,24.257mm) on Bottom Layer And Via (27.899mm,24.764mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4277.401mil|Location2.X=4495.803mil|Location1.Y=3295.945mil|Location2.Y=3495.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4277.401mil|Location2.X=4495.803mil|Location1.Y=3295.945mil|Location2.Y=3495.89mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Track (27.686mm,13.982mm)(27.686mm,24.257mm) on Bottom Layer And Via (28.153mm,24.256mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3778.401mil|Location2.X=3794.992mil|Location1.Y=2676.945mil|Location2.Y=2789.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3778.401mil|Location2.X=3794.992mil|Location1.Y=2676.945mil|Location2.Y=2789.41mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (12.675mm,6.198mm) from Top Layer to Bottom Layer And Via (12.69mm,8.648mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3601.401mil|Location2.X=3794.992mil|Location1.Y=2773.41mil|Location2.Y=3186.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3601.401mil|Location2.X=3794.992mil|Location1.Y=2773.41mil|Location2.Y=3186.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (8.179mm,18.745mm) from Top Layer to Bottom Layer And Via (12.69mm,8.648mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.811mil|Location2.X=4287.608mil|Location1.Y=3349.863mil|Location2.Y=3629.169mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.811mil|Location2.X=4287.608mil|Location1.Y=3349.863mil|Location2.Y=3629.169mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (19.441mm,29.978mm) from Top Layer to Bottom Layer And Via (25.1mm,23.391mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4239.758mil|Location1.Y=2977.669mil|Location2.Y=3070.441mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4239.758mil|Location1.Y=2977.669mil|Location2.Y=3070.441mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (23.987mm,13.836mm) from Top Layer to Bottom Layer And Via (23.987mm,15.786mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4239.758mil|Location1.Y=3054.441mil|Location2.Y=3172.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4239.758mil|Location1.Y=3054.441mil|Location2.Y=3172.803mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (23.987mm,15.786mm) from Top Layer to Bottom Layer And Via (23.987mm,18.386mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4239.758mil|Location1.Y=3156.803mil|Location2.Y=3198.394mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4239.758mil|Location1.Y=3156.803mil|Location2.Y=3198.394mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (23.987mm,18.386mm) from Top Layer to Bottom Layer And Via (23.987mm,19.036mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4287.608mil|Location1.Y=3182.394mil|Location2.Y=3373.863mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.758mil|Location2.X=4287.608mil|Location1.Y=3182.394mil|Location2.Y=3373.863mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (23.987mm,19.036mm) from Top Layer to Bottom Layer And Via (25.1mm,23.391mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4357.803mil|Location2.X=4393.803mil|Location1.Y=3407.89mil|Location2.Y=3423.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4357.803mil|Location2.X=4393.803mil|Location1.Y=3407.89mil|Location2.Y=3423.89mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Via (27.391mm,24.764mm) from Top Layer to Bottom Layer And Via (27.899mm,24.764mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4377.803mil|Location2.X=4413.803mil|Location1.Y=3407.89mil|Location2.Y=3423.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4377.803mil|Location2.X=4413.803mil|Location1.Y=3407.89mil|Location2.Y=3423.89mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Via (27.899mm,24.764mm) from Top Layer to Bottom Layer And Via (28.407mm,24.764mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4387.803mil|Location2.X=4423.803mil|Location1.Y=3387.89mil|Location2.Y=3403.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4387.803mil|Location2.X=4423.803mil|Location1.Y=3387.89mil|Location2.Y=3403.89mil|Absolute=True">Un-Routed Net Constraint: Net +3V3 Between Via (28.153mm,24.256mm) from Top Layer to Bottom Layer And Via (28.661mm,24.256mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4477.134mil|Location2.X=4637.921mil|Location1.Y=3426.441mil|Location2.Y=3525.794mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4477.134mil|Location2.X=4637.921mil|Location1.Y=3426.441mil|Location2.Y=3525.794mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (30.422mm,27.352mm) from Top Layer to Bottom Layer And Via (34.1mm,25.235mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.399mil|Location2.X=4641.399mil|Location1.Y=3126.945mil|Location2.Y=3236.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.399mil|Location2.X=4641.399mil|Location1.Y=3126.945mil|Location2.Y=3236.41mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (34.087mm,17.729mm) from Top Layer to Bottom Layer And Via (34.087mm,19.9mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3491.401mil|Location2.X=3527.401mil|Location1.Y=3502.945mil|Location2.Y=3518.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3491.401mil|Location2.X=3527.401mil|Location1.Y=3502.945mil|Location2.Y=3518.945mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (5.385mm,27.178mm) from Top Layer to Bottom Layer And Via (5.893mm,27.178mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3511.401mil|Location2.X=3547.401mil|Location1.Y=3502.945mil|Location2.Y=3518.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3511.401mil|Location2.X=3547.401mil|Location1.Y=3502.945mil|Location2.Y=3518.945mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (5.893mm,27.178mm) from Top Layer to Bottom Layer And Via (6.401mm,27.178mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3591.401mil|Location2.X=3617.401mil|Location1.Y=3170.945mil|Location2.Y=3206.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3591.401mil|Location2.X=3617.401mil|Location1.Y=3170.945mil|Location2.Y=3206.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (7.925mm,19.253mm) from Top Layer to Bottom Layer And Via (8.179mm,18.745mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3591.401mil|Location2.X=3627.401mil|Location1.Y=3190.945mil|Location2.Y=3206.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3591.401mil|Location2.X=3627.401mil|Location1.Y=3190.945mil|Location2.Y=3206.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (7.925mm,19.253mm) from Top Layer to Bottom Layer And Via (8.433mm,19.253mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3601.401mil|Location2.X=3637.401mil|Location1.Y=3170.945mil|Location2.Y=3186.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3601.401mil|Location2.X=3637.401mil|Location1.Y=3170.945mil|Location2.Y=3186.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (8.179mm,18.745mm) from Top Layer to Bottom Layer And Via (8.687mm,18.745mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3611.401mil|Location2.X=3647.401mil|Location1.Y=3190.945mil|Location2.Y=3206.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3611.401mil|Location2.X=3647.401mil|Location1.Y=3190.945mil|Location2.Y=3206.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (8.433mm,19.253mm) from Top Layer to Bottom Layer And Via (8.941mm,19.253mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3621.401mil|Location2.X=3657.401mil|Location1.Y=3170.945mil|Location2.Y=3186.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3621.401mil|Location2.X=3657.401mil|Location1.Y=3170.945mil|Location2.Y=3186.945mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Via (8.687mm,18.745mm) from Top Layer to Bottom Layer And Via (9.195mm,18.745mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3BURKD5QYFPSKF0ZVJKUUV23UN2N5B2QKGOF5VIFNUY5V3EJ3QCL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.901mil|Location2.X=3805.021mil|Location1.Y=2673.445mil|Location2.Y=2718.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.901mil|Location2.X=3805.021mil|Location1.Y=2673.445mil|Location2.Y=2718.415mil|Absolute=True">Net Antennae: Via (12.675mm,6.198mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3775.492mil|Location2.X=3805.612mil|Location1.Y=2769.91mil|Location2.Y=2814.88mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3775.492mil|Location2.X=3805.612mil|Location1.Y=2769.91mil|Location2.Y=2814.88mil|Absolute=True">Net Antennae: Via (12.69mm,8.648mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3814.901mil|Location2.X=3845.021mil|Location1.Y=3722.445mil|Location2.Y=3767.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3814.901mil|Location2.X=3845.021mil|Location1.Y=3722.445mil|Location2.Y=3767.415mil|Absolute=True">Net Antennae: Via (13.691mm,32.842mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.099mil|Location2.X=3986.218mil|Location1.Y=3076.532mil|Location2.Y=3121.501mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.099mil|Location2.X=3986.218mil|Location1.Y=3076.532mil|Location2.Y=3121.501mil|Absolute=True">Net Antennae: Via (17.277mm,16.436mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4220.258mil|Location2.X=4250.378mil|Location1.Y=2974.169mil|Location2.Y=3019.139mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4220.258mil|Location2.X=4250.378mil|Location1.Y=2974.169mil|Location2.Y=3019.139mil|Absolute=True">Net Antennae: Via (23.987mm,13.836mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4220.258mil|Location2.X=4250.378mil|Location1.Y=3050.941mil|Location2.Y=3095.911mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4220.258mil|Location2.X=4250.378mil|Location1.Y=3050.941mil|Location2.Y=3095.911mil|Absolute=True">Net Antennae: Via (23.987mm,15.786mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4260.108mil|Location2.X=4298.935mil|Location1.Y=3346.363mil|Location2.Y=3405.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4260.108mil|Location2.X=4298.935mil|Location1.Y=3346.363mil|Location2.Y=3405.811mil|Absolute=True">Net Antennae: Via (25.1mm,23.391mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3487.901mil|Location2.X=3518.021mil|Location1.Y=3499.445mil|Location2.Y=3544.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3487.901mil|Location2.X=3518.021mil|Location1.Y=3499.445mil|Location2.Y=3544.415mil|Absolute=True">Net Antennae: Via (5.385mm,27.178mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3507.901mil|Location2.X=3538.021mil|Location1.Y=3499.445mil|Location2.Y=3544.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3507.901mil|Location2.X=3538.021mil|Location1.Y=3499.445mil|Location2.Y=3544.415mil|Absolute=True">Net Antennae: Via (5.893mm,27.178mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3527.901mil|Location2.X=3558.021mil|Location1.Y=3499.445mil|Location2.Y=3544.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3527.901mil|Location2.X=3558.021mil|Location1.Y=3499.445mil|Location2.Y=3544.415mil|Absolute=True">Net Antennae: Via (6.401mm,27.178mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.901mil|Location2.X=3618.021mil|Location1.Y=3187.445mil|Location2.Y=3232.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.901mil|Location2.X=3618.021mil|Location1.Y=3187.445mil|Location2.Y=3232.415mil|Absolute=True">Net Antennae: Via (7.925mm,19.253mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3597.901mil|Location2.X=3628.021mil|Location1.Y=3167.445mil|Location2.Y=3212.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3597.901mil|Location2.X=3628.021mil|Location1.Y=3167.445mil|Location2.Y=3212.415mil|Absolute=True">Net Antennae: Via (8.179mm,18.745mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3607.901mil|Location2.X=3638.021mil|Location1.Y=3187.445mil|Location2.Y=3232.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3607.901mil|Location2.X=3638.021mil|Location1.Y=3187.445mil|Location2.Y=3232.415mil|Absolute=True">Net Antennae: Via (8.433mm,19.253mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3617.901mil|Location2.X=3648.021mil|Location1.Y=3167.445mil|Location2.Y=3212.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3617.901mil|Location2.X=3648.021mil|Location1.Y=3167.445mil|Location2.Y=3212.415mil|Absolute=True">Net Antennae: Via (8.687mm,18.745mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3627.901mil|Location2.X=3658.021mil|Location1.Y=3187.445mil|Location2.Y=3232.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3627.901mil|Location2.X=3658.021mil|Location1.Y=3187.445mil|Location2.Y=3232.415mil|Absolute=True">Net Antennae: Via (8.941mm,19.253mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3637.901mil|Location2.X=3668.021mil|Location1.Y=3167.445mil|Location2.Y=3212.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Google Driver phongdo.dk1\study\ki 6\Ku ki 6\encoder_project\PCB_Kur.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3637.901mil|Location2.X=3668.021mil|Location1.Y=3167.445mil|Location2.Y=3212.415mil|Absolute=True">Net Antennae: Via (9.195mm,18.745mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

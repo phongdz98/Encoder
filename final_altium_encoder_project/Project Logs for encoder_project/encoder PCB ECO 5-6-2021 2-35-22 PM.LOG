@@ -1,0 +1,128 @@
+Added Component: Designator=C1(Cap Ceramic 0603 SMD)
+Added Component: Designator=C3(Cap Ceramic 0805 SMD)
+Added Component: Designator=C4(Cap Ceramic 0805 SMD)
+Added Component: Designator=C5(Cap Ceramic 0603 SMD)
+Added Component: Designator=C6(Cap Ceramic 0603 SMD)
+Added Component: Designator=C7(Cap Ceramic 0603 SMD)
+Added Component: Designator=C8(Cap Ceramic 0603 SMD)
+Added Component: Designator=C9(Cap Ceramic 0603 SMD)
+Added Component: Designator=C10(Cap Ceramic 0603 SMD)
+Added Component: Designator=DA1(SOT143)
+Add component (AddParameter): Name = "Digi-Key_Part_Number"; Value = "F2715CT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Purchase_URL"; Value = "https://www.digikey.com/product-detail/en/littelfuse-inc/SP0503BAHTG/F2715CT-ND/1154322?utm_source=snapeda&utm_medium=aggregator&utm_campaign=symbol"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Littelfuse Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "SP0503BAHTG"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SOT-143 Littelfuse"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/SP0503BAHTG/Littelfuse%20Inc./view-part/214427/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=DD1(QFN28G_0.5-5X5MM)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Silicon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "CP2102-GMR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "VFQFN-28 Vishay Siliconix"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/CP2102-GMR/Silicon%20Labs/view-part/570818/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=DD2(stm32f103c8t6-48LQFP)
+Added Component: Designator=VD1(Led 0805R)
+Added Component: Designator=VD2(Led 0805G)
+Added Component: Designator=X1(Header_4)
+Added Component: Designator=X2(USB_MNI_B)
+Added Component: Designator=X3(Header_5)
+Added Component: Designator=ZQ1(CRYSTAL-HC49S)
+Added Pin To Net: NetName=+3V3 Pin=C1-2
+Added Pin To Net: NetName=+3V3 Pin=C6-2
+Added Pin To Net: NetName=+3V3 Pin=C7-2
+Added Pin To Net: NetName=+3V3 Pin=C8-2
+Added Pin To Net: NetName=+3V3 Pin=C9-2
+Added Pin To Net: NetName=+3V3 Pin=C10-2
+Added Pin To Net: NetName=+3V3 Pin=DD1-6
+Added Pin To Net: NetName=+3V3 Pin=DD2-1
+Added Pin To Net: NetName=+3V3 Pin=DD2-9
+Added Pin To Net: NetName=+3V3 Pin=DD2-24
+Added Pin To Net: NetName=+3V3 Pin=DD2-36
+Added Pin To Net: NetName=+3V3 Pin=DD2-48
+Added Pin To Net: NetName=+3V3 Pin=X1-1
+Added Pin To Net: NetName=+3V3 Pin=X3-4
+Added Net: Name=+3V3
+Added Pin To Net: NetName=+5V Pin=DA1-2
+Added Pin To Net: NetName=+5V Pin=DD1-7
+Added Pin To Net: NetName=+5V Pin=DD1-8
+Added Pin To Net: NetName=+5V Pin=X2-1
+Added Net: Name=+5V
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C4-1
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C7-1
+Added Pin To Net: NetName=GND Pin=C8-1
+Added Pin To Net: NetName=GND Pin=C9-1
+Added Pin To Net: NetName=GND Pin=C10-1
+Added Pin To Net: NetName=GND Pin=DA1-1
+Added Pin To Net: NetName=GND Pin=DD1-3
+Added Pin To Net: NetName=GND Pin=DD1-29
+Added Pin To Net: NetName=GND Pin=DD2-8
+Added Pin To Net: NetName=GND Pin=DD2-23
+Added Pin To Net: NetName=GND Pin=DD2-35
+Added Pin To Net: NetName=GND Pin=DD2-47
+Added Pin To Net: NetName=GND Pin=X1-4
+Added Pin To Net: NetName=GND Pin=X2-5
+Added Pin To Net: NetName=GND Pin=X3-5
+Added Net: Name=GND
+Added Pin To Net: NetName=NetC3_2 Pin=C3-2
+Added Pin To Net: NetName=NetC3_2 Pin=DD2-5
+Added Pin To Net: NetName=NetC3_2 Pin=ZQ1-2
+Added Net: Name=NetC3_2
+Added Pin To Net: NetName=NetC4_2 Pin=C4-2
+Added Pin To Net: NetName=NetC4_2 Pin=DD2-6
+Added Pin To Net: NetName=NetC4_2 Pin=ZQ1-1
+Added Net: Name=NetC4_2
+Added Pin To Net: NetName=NetC5_2 Pin=C5-2
+Added Pin To Net: NetName=NetC5_2 Pin=DD2-7
+Added Net: Name=NetC5_2
+Added Pin To Net: NetName=NetDD1_9 Pin=DD1-9
+Added Net: Name=NetDD1_9
+Added Pin To Net: NetName=NetDD1_11 Pin=DD1-11
+Added Net: Name=NetDD1_11
+Added Pin To Net: NetName=NetDD2_10 Pin=DD2-10
+Added Pin To Net: NetName=NetDD2_10 Pin=X3-1
+Added Net: Name=NetDD2_10
+Added Pin To Net: NetName=NetDD2_11 Pin=DD2-11
+Added Pin To Net: NetName=NetDD2_11 Pin=X3-2
+Added Net: Name=NetDD2_11
+Added Pin To Net: NetName=NetDD2_12 Pin=DD2-12
+Added Pin To Net: NetName=NetDD2_12 Pin=X3-3
+Added Net: Name=NetDD2_12
+Added Pin To Net: NetName=NetDD2_20 Pin=DD2-20
+Added Net: Name=NetDD2_20
+Added Pin To Net: NetName=NetDD2_34 Pin=DD2-34
+Added Pin To Net: NetName=NetDD2_34 Pin=X1-2
+Added Net: Name=NetDD2_34
+Added Pin To Net: NetName=NetDD2_37 Pin=DD2-37
+Added Pin To Net: NetName=NetDD2_37 Pin=X1-3
+Added Net: Name=NetDD2_37
+Added Pin To Net: NetName=NetDD2_44 Pin=DD2-44
+Added Net: Name=NetDD2_44
+Added Pin To Net: NetName=NetR1_1 Pin=VD2-1
+Added Net: Name=NetR1_1
+Added Pin To Net: NetName=NetR2_1 Pin=VD1-1
+Added Net: Name=NetR2_1
+Added Pin To Net: NetName=RXD Pin=DD1-25
+Added Pin To Net: NetName=RXD Pin=DD2-30
+Added Pin To Net: NetName=RXD Pin=VD1-2
+Added Net: Name=RXD
+Added Pin To Net: NetName=TXD Pin=DD1-26
+Added Pin To Net: NetName=TXD Pin=DD2-31
+Added Pin To Net: NetName=TXD Pin=VD2-2
+Added Net: Name=TXD
+Added Pin To Net: NetName=USBDM Pin=DA1-4
+Added Pin To Net: NetName=USBDM Pin=DD1-5
+Added Pin To Net: NetName=USBDM Pin=X2-2
+Added Net: Name=USBDM
+Added Pin To Net: NetName=USBDP Pin=DA1-3
+Added Pin To Net: NetName=USBDP Pin=DD1-4
+Added Pin To Net: NetName=USBDP Pin=X2-3
+Added Net: Name=USBDP
+Added Class: Name=encoder
+Added Room: Name=encoder

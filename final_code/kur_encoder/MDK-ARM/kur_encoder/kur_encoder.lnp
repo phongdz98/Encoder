@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"kur_encoder\startup_stm32f103xb.o"
+"kur_encoder\main.o"
+"kur_encoder\stm32f1xx_it.o"
+"kur_encoder\stm32f1xx_hal_msp.o"
+"kur_encoder\stm32f1xx_hal_gpio_ex.o"
+"kur_encoder\stm32f1xx_hal_tim.o"
+"kur_encoder\stm32f1xx_hal_tim_ex.o"
+"kur_encoder\stm32f1xx_hal.o"
+"kur_encoder\stm32f1xx_hal_rcc.o"
+"kur_encoder\stm32f1xx_hal_rcc_ex.o"
+"kur_encoder\stm32f1xx_hal_gpio.o"
+"kur_encoder\stm32f1xx_hal_dma.o"
+"kur_encoder\stm32f1xx_hal_cortex.o"
+"kur_encoder\stm32f1xx_hal_pwr.o"
+"kur_encoder\stm32f1xx_hal_flash.o"
+"kur_encoder\stm32f1xx_hal_flash_ex.o"
+"kur_encoder\stm32f1xx_hal_exti.o"
+"kur_encoder\stm32f1xx_hal_uart.o"
+"kur_encoder\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "kur_encoder\kur_encoder.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "kur_encoder.map" -o kur_encoder\kur_encoder.axf

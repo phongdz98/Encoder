@@ -1,0 +1,38 @@
+Added Component: Designator=C2(cap tantalum  smd a)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH008686"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? tantalum 475C-4.7uF 16V SMD3216"; VariantName = "[No Variations]"
+Added Component: Designator=R1(Res 0805 SMD)
+Added Component: Designator=R2(Res 0805 SMD)
+Added Component: Designator=R3(Res 0805 SMD)
+Added Component: Designator=R4(Res 0805 SMD)
+Added Component: Designator=R5(Res 0805 SMD)
+Added Component: Designator=R6(Res 0805 SMD)
+Added Component: Designator=R7(Res 0805 SMD)
+Added Pin To Net: NetName=+3V3 Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=NetR1_1 Pin=R1-1
+Added Pin To Net: NetName=+3V3 Pin=R1-2
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=GND Pin=R2-2
+Added Pin To Net: NetName=+5V Pin=R3-1
+Added Pin To Net: NetName=NetDD1_9 Pin=R3-2
+Added Pin To Net: NetName=GND Pin=R4-1
+Added Pin To Net: NetName=NetDD1_11 Pin=R4-2
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=NetDD2_20 Pin=R5-2
+Added Pin To Net: NetName=GND Pin=R6-1
+Added Pin To Net: NetName=NetDD2_44 Pin=R6-2
+Added Pin To Net: NetName=NetC5_2 Pin=R7-1
+Added Pin To Net: NetName=+3V3 Pin=R7-2
+Added Member To Class: ClassName=encoder Member=Component C2 4.7uF
+Added Member To Class: ClassName=encoder Member=Component R1 1K
+Added Member To Class: ClassName=encoder Member=Component R2 1K
+Added Member To Class: ClassName=encoder Member=Component R3 4,7K-0,125W
+Added Member To Class: ClassName=encoder Member=Component R4 10K
+Added Member To Class: ClassName=encoder Member=Component R5 4,7K-0,125W
+Added Member To Class: ClassName=encoder Member=Component R6 4,7K-0,125W
+Added Member To Class: ClassName=encoder Member=Component R7 4,7K-0,125W
